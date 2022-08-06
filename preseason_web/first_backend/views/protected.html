@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div id="authenticate">
+        <form id="form">
+            <input type="text" name="login" id="login" placeholder="enter login name"><br>
+            <input type="text" name="password" id="password" placeholder="enter password"><br>
+            <input type="submit" value="Login">
+        </form>
+
+    </div>
+
+    <script>
+        let form = document.getElementById('form')
+        let divText = document.getElementById('authenticate')
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const login = form.elements['login'].value
+            const password = form.elements['password'].value
+            if (login === 'admin' && password === 'admin') {
+                divText.textContent = "Welcome, authenticated client"
+                console.log(divText.textContent)
+            } else {
+                divText.textContent = 'Not authorized'
+                console.log(divText.textContent)
+            }
+        })
+    </script>
+</body>
+
+</html>
