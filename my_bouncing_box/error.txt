@@ -1,0 +1,27 @@
+it 'Box is not going off screen' do                                 
+                                         index = 0                                                       
+                                                                                                         
+                                         width =  get_page_size_width()                                  
+                                         height = get_page_size_height()                                 
+                                                                                                         
+                                         origin_y = get_attribute_for_element('my_bouncing_box', 'top')  
+                                         origin_x = get_attribute_for_element('my_bouncing_box', 'left') 
+                                         while index < 15 do                                             
+                                             y_2 = get_attribute_for_element('my_bouncing_box', 'top')   
+                                             x_2 = get_attribute_for_element('my_bouncing_box', 'left')  
+                                                                                                         
+                                             if y_2 > height                                             
+                                                 fail("The box is out of the screen")                    
+                                             elsif y_2 < 0                                               
+                                                 fail("The box is out of the screen")                    
+                                             end                                                         
+                                                                                                         
+                                             if x_2 > width                                              
+                                                 fail("The box is out of the screen")                    
+                                             elsif x_2 < 0                                               
+                                                 fail("The box is out of the screen")                    
+                                             end                                                         
+                                             sleep 1                                                     
+                                             index += 1                                                  
+                                         end                                                             
+                                     end                        

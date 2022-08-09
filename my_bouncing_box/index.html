@@ -1,0 +1,45 @@
+<html style='background-color: black'>
+<div id="my_bouncing_box" style="background-color: blue; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;">Not loaded</div>
+<script type="text/javascript">
+    let box = document.getElementById("my_bouncing_box")
+    box.innerHTML = "shekari philemon ammaman"
+    box.style.removeProperty("top");
+    box.style.removeProperty("left");
+    box.style.bottom = "0";
+    box.style.right = "0";
+    const offsetLeft = box.offsetLeft
+    const offsetTop = box.offsetTop
+    box.style.removeProperty("bottom");
+    box.style.removeProperty("right");
+
+    let x_axis = 0;
+    let y_axis = 0;
+    let x_position = true
+    let y_position = true
+
+    setInterval(function() {
+
+        if (x_position) {
+            x_axis++;
+        } else {
+            x_axis--;
+        }
+        if (y_position) {
+            y_axis++;
+        } else {
+            y_axis--;
+        }
+
+        if (x_axis == offsetLeft || x_axis == 0) {
+            x_position = !x_position
+        }
+        if (y_axis == offsetTop || y_axis == 0) {
+            y_position = !y_position
+        }
+        box.style.left = x_axis;
+        box.style.top = y_axis;
+
+    }, 10);
+</script>
+
+</html>

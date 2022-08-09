@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html style="background-color: black;">
+
+<body>
+    <div id="my_bouncing_box" style="background-color: blue; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;">
+        emmanuel_m
+    </div>
+
+    <script>
+        let box = document.getElementById('my_bouncing_box')
+        box.style.removeProperty('top')
+        box.style.removeProperty('left')
+        box.style.bottom = '0'
+        box.style.right = '0'
+        const offset_left = box.offsetLeft
+        const offset_top = box.offsetTop
+        box.style.removeProperty('bottom')
+        box.style.removeProperty('right')
+
+        let horizontal = 0
+        let vertical = 0
+        let horizontal_pos = true
+        let vertical_pos = true
+
+        setInterval(moveBox, 10)
+
+        function moveBox() {
+            if (horizontal_pos) {
+                horizontal++
+            } else {
+                horizontal--
+            }
+
+            if (vertical_pos) {
+                vertical++
+            } else {
+                vertical--
+            }
+
+            if (horizontal == offset_left || horizontal == 0) {
+                horizontal_pos = !horizontal_pos
+            }
+            if (vertical == offset_top || vertical == 0) {
+                vertical_pos = !vertical_pos
+            }
+
+            box.style.left = horizontal + 'px'
+            box.style.top = vertical + 'px'
+        }
+    </script>
+</body>
+
+</html>

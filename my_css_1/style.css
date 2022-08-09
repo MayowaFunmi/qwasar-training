@@ -1,0 +1,53 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+#divide {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+}
+
+#header {
+    background-color: #00B7EB;
+    padding: 40px;
+    width: 100%
+}
+
+#hero {
+    background-color: #FF0000;
+    padding: 40px;
+    width: 100%
+}
+
+#content {
+    background-color: #00FF00;
+    padding: 40px;
+    width: 50%;
+}
+
+#sidebar {
+    background-color: #800080;
+    padding: 40px;
+    width: 50%;
+}
+
+#footer {
+    background-color: #444444;
+    padding: 40px;
+    width: 100%
+}
+
+@media only screen and (max-width: 500px) {
+    #divide {
+        display: flex;
+        flex-direction: column;
+    }
+    #content,
+    #sidebar {
+        width: 100%;
+    }
+}

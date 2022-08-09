@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html style="background-color: black;">
+
+<body>
+    <div id="my_bouncing_box" style="background-color: blue; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;">
+        emmanuel_m
+    </div>
+
+    <script type="text/javascript">
+        let box = document.getElementById('my_bouncing_box')
+        let box_top = box.style.top.slice(0, -2)
+        let left = box.style.left.slice(0, -2)
+        let width = window.screen.width
+
+        let topToMiddle = true
+        let midToBottom = true
+        let bottomToTop = true
+        let topToRight = true
+
+        start()
+
+        // function to set box in position at the top
+        function start() {
+            left = 500
+            box_top = 0
+            box.style.top = box_top + 'px'
+            box.style.left = left + 'px'
+            move_box = setInterval(moveBox, 10) // global variable
+        }
+
+        // function to start moving the box
+        function moveBox() {
+            if (topToMiddle) {
+                box_top++
+                left--
+                box.style.top = box_top + 'px'
+                box.style.left = left + 'px'
+                if (left === 0) {
+                    topToMiddle = false
+                    midToBottom = true
+                    console.log(box.offsetWidth)
+                    move_mid_down = setInterval(moveMidDown, 10)
+                }
+            }
+        }
+
+        // function to move box from left down
+        function moveMidDown() {
+            if (midToBottom) {
+                left++
+                box_top++
+                box.style.left = left + 'px'
+                box.style.top = box_top + 'px'
+                if (box_top === 570) {
+                    midToBottom = false
+                    bottomToTop = true
+                    move_bottom_top = setInterval(moveBottomTop, 10)
+                }
+            }
+        }
+
+        // function to move box frombottom back to top
+        function moveBottomTop() {
+            if (bottomToTop) {
+                box_top--
+                left++
+                box.style.top = box_top + 'px'
+                box.style.left = left + 'px'
+                if (box_top === 0) {
+                    bottomToTop = false
+                    topToRight = true
+                    move_top_right = setInterval(moveTopRight, 10)
+                }
+            }
+        }
+
+        // function to move box from to to right
+        function moveTopRight() {
+            if (topToRight) {
+                box_top++
+                left++
+                box.style.top = box_top + 'px'
+                box.style.left = left + 'px'
+                if (left === 1213) {
+                    clearInterval(move_box)
+                    clearInterval(move_mid_down)
+                    clearInterval(move_bottom_top)
+                    clearInterval(move_top_right)
+                    topToMiddle = true
+                        //start()
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
