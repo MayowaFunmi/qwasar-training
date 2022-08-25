@@ -17,13 +17,26 @@ char* my_spaceship(char* param_1){
     ptr_cur = cur_pos;
     int x_coord = 0, y_coord = 0;
     int size = sizeof(param_1)/sizeof(param_1[0]);
+    // printf("%s\n", up);
+    // printf("%s\n", down);
+    // printf("%s\n", right);
+    // printf("%s\n", left);
+
+    // printf("%s\n", ptr_cur);
+    // printf("%s\n", ptr_up);
+    // printf("%s\n", ptr_down);
+    // printf("%s\n", ptr_right);
+    // printf("%s\n", ptr_left);
+
     for (int i=0; i < size; i++) {
         char val[1] = "R", *ptr_val;
         ptr_val = val;
-        if (param_1[i] == *ptr_val) {
-            if (*ptr_cur == *ptr_up) {
-                *ptr_cur = *ptr_right;
-            }
+        if (param_1[i] == *val) {   //param_1[i] == *ptr_val
+            if (ptr_cur == ptr_up){   //(*ptr_cur == *ptr_up)
+                //ptr_cur = ptr_right;  //*ptr_cur = *ptr_right;
+                printf("yes");
+            } else 
+            printf("%s\n", ptr_cur);
             //*ptr_val = "right";
             //*ptr_cur = *ptr_val;
             
