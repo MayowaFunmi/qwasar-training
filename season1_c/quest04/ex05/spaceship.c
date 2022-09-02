@@ -15,8 +15,8 @@ char* my_spaceship(char* param_1){
     result = (char*)malloc(500*sizeof(char));
 
     direction = "up";
-    int size = sizeof(param_1)/sizeof(param_1[0]);
-    for (int i=0; i<size; i++) {
+    //int size = sizeof(param_1)/sizeof(param_1[0]);
+    for (int i=0; i<strlen(param_1); i++) {
         if(param_1[i] == 'R') {
             if (cur_pos == 'u') {
                 direction = "right";
@@ -57,7 +57,10 @@ char* my_spaceship(char* param_1){
             }
         }
     }
-    int c = snprintf(result, 100, "{x: %d, y: %d, direction: %s}", x_coord, y_coord, direction);
+    snprintf(result, 100, "{x: %d, y: %d, direction: '%s'}", x_coord, y_coord, direction);
+    free(result);
+    printf("{x: %d, y: %d, direction: '%s'}", x_coord, y_coord, direction);
+    printf("%s\n", result);
     return result;
     // printf("%c\n", cur_pos);
     // printf("%s\n", direction);
