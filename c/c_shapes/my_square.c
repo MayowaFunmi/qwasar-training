@@ -25,10 +25,11 @@ void my_square(int col, int row) {
 
 int main (int ac, char **av) {
     int x, y;
+    printf("%d\n", ac);
     if (ac == 2) {
         x = atoi(av[1]);
         y = 0;
-        printf("");
+        printf(" ");
     } else if (ac == 3){
         x = atoi(av[1]);
         y = atoi(av[2]);

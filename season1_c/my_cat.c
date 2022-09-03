@@ -2,15 +2,25 @@
 #include <string.h>
 
 int main (int argc, char* argv[]) {
-    FILE* fptr;
-    fptr = fopen(argv[2], "r");
-    if(!fptr || argc != 2) {
-        printf("ERROR");
+    FILE* ptr;
+    char file;
+    for (int i=1; i<argc; i++) {
+        printf("%s\n", argv[i]);
+        ptr = fopen(argv[i], "r");
+        while ((file = getc(ptr)) != EOF) {
+            printf("%c", file);
+        }
+        printf("\n");
     }
+    fclose(ptr);
 
-    char ch;
-    while ((ch = fgetc(fptr)) != EOF) {
-        printf("%c", ch);
+    /*
+    FILE* ptr;
+    ptr = fopen(argv[1], "r");
+    char file;
+    while ((file = fgetc(ptr)) != EOF) {
+        printf("%c", file);
     }
-    fclose(fptr);
+    fclose(ptr);
+    */
 }
