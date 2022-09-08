@@ -14,7 +14,7 @@ int main( int argc, char argv[] )  {
 
         if(strchr(alph_store, sent[i]) == NULL){
 
-             int counter = 1;
+            int counter = 1;
             for(int j=i+1; sent[j] !='\0'; j++){
 
                 if(sent[j]==sent[i]){

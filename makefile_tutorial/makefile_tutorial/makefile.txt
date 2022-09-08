@@ -1,0 +1,26 @@
+.PHONY: all
+all: main
+
+main: main.o lib.o
+	gcc -o main main.o lib.o
+
+main.o: main.c
+	gcc -c main.c -o main.o
+
+lib.o: lib.c
+	gcc -c lib.c -o lib.o
+
+.PHONY: clean
+clean:
+	rm -f *.o main
+
+
+$@ => name of target e.g main, main.o, lib.o
+
+$% => target member name
+    if target is foo.a(bar.o), then $@ => foo.a and $% => bar.o
+
+$< => name of the first prerequisite (after the target:)
+    e.g main.o, main.c, lib.c
+
+$^ => names of all prerequisite (after the target:)
