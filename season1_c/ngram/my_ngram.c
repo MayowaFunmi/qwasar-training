@@ -6,12 +6,16 @@ int main(int argc, char* argv[]) {
     char* string;
     string = (char*)malloc(100*sizeof(char));
     //string = argv[1];
-    int count[50];
+    int count[500];
+    int capital[500];
+    char special[500];
     //(void)argc;
 
     // initialize the frequency of each character to 0
     for (int i=0; i<50; i++) {
         count[i] = 0;
+        capital[i] = 0;
+        special[i] = 0;
     }
 
     // find the total number of occurences of each character
@@ -22,9 +26,9 @@ int main(int argc, char* argv[]) {
                 count[string[x] - 97] ++;
             }
             if(string[x]>='A' && string[x]<='Z'){
-                count[string[x] - 65]++;
+                capital[string[x] - 65]++;
             }
-            if(string[x]>=' ' || string[x]<='Z'){
+            if(string[x]>=' '){
                 count[string[x] - 65]++;
             }
         }
@@ -33,8 +37,18 @@ int main(int argc, char* argv[]) {
 
     // print the frequency of all characters
     for (int j=0; j<50; j++) {
-        if (count[j] != 0) {
-            printf("%c: %d\n", (j + 97), count[j]);
+        if (capital[j] != 0) {
+            printf("%c: %d\n", (j + 65), capital[j]);
+        }
+    }
+    for (int i=0; i<50; i++) {
+        if (count[i] != 0) {
+            printf("%c: %d\n", (i + 65), count[i]);
+        }
+    }
+    for (int j=0; j<50; j++) {
+        if (special[j] != 0) {
+            printf("%c: %d\n", (j + 65), special[j]);
         }
     }
     return 0;
