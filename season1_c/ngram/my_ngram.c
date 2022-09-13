@@ -1,58 +1,64 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-int main(int argc, char* argv[]) {
-    char* string;
-    string = (char*)malloc(100*sizeof(char));
+#include <stdio.h> 
+#include <string.h> 
+#include <stdlib.h> 
+  
+int main(int argc, char* argv[]) { 
+    char* string; 
+    string = (char*)malloc(100*sizeof(char)); 
     //string = argv[1];
-    int count[500];
-    int capital[500];
-    char special[500];
-    //(void)argc;
-
-    // initialize the frequency of each character to 0
-    for (int i=0; i<50; i++) {
+    int others[200];
+    int count[200];
+ 	int capital[200];
+    //(void)argc; 
+    printf("no of args = %d\n", argc);
+    // initialize the frequency of each character to 0 
+    for (int i=0; i<200; i++) { 
         count[i] = 0;
-        capital[i] = 0;
-        special[i] = 0;
+    	capital[i] = 0;
+ 		others[i] = 0;
     }
-
-    // find the total number of occurences of each character
-    for (int a=1; a<argc; a++) {
-        string = argv[a];
-        for (int x=0; string[x] != '\0'; x++) {
-            if(string[x] >= 'a' && string[x] <= 'z') {
-                count[string[x] - 97] ++;
+    // find the total number of occurences of each character 
+    for (int a=1; a<argc; a++) { 
+        string = argv[a]; 
+        for (int x=0; string[x] != '\0'; x++) { 
+            if(string[x] >= 97 && string[x] <= 122) { 
+                count[string[x] - 97] ++; 
             }
-            if(string[x]>='A' && string[x]<='Z'){
-                capital[string[x] - 65]++;
+            if(string[x]>=65 && string[x]<=90){ 
+                capital[string[x] - 65]++; 
             }
-            if(string[x]>=' '){
-                count[string[x] - 65]++;
+            if(string[x] == ' '){ 
+                others[32]++; 
+            }
+            if(string[x] == ','){ 
+                others[44]++; 
+            }
+            if(string[x] == '.'){ 
+                others[46]++; 
             }
         }
     }
-    
-
-    // print the frequency of all characters
-    for (int j=0; j<50; j++) {
-        if (capital[j] != 0) {
-            printf("%c: %d\n", (j + 65), capital[j]);
+      
+  	//printf("small = %s\n", *count);
+  	//printf("capital = %d\n", *capital);
+    // print the frequency of all characters 
+ 	for (int d=0; d<200; d++) {
+ 		if(others[d] != 0) {
+            printf("%c: %d\n", d, others[d]); 
+ 		}
+    }
+ 	for (int j=0; j<200; j++) {
+ 		if(capital[j] != 0) {
+            printf("%c: %d\n", (j + 65), capital[j]); 
+ 		}
+    }
+    for (int k=0; k<200; k++) { 
+        if (count[k] != 0) {
+            printf("%c: %d\n", (k + 97), count[k]); 
         }
     }
-    for (int i=0; i<50; i++) {
-        if (count[i] != 0) {
-            printf("%c: %d\n", (i + 65), count[i]);
-        }
-    }
-    for (int j=0; j<50; j++) {
-        if (special[j] != 0) {
-            printf("%c: %d\n", (j + 65), special[j]);
-        }
-    }
-    return 0;
-}
+    return 0; 
+ }
 
 
 
