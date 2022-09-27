@@ -7,7 +7,18 @@
 #define NUM_STRING 4
 
 int main(int argc, char* argv[]) {
-    char* secret = argv[1];
+    char* secret;
+    if (argc == 2) {
+        secret = argv[1];
+        if (secret == NULL) {
+            endfile();
+        }
+    } else if (argc == 3){
+        secret = argv[2];
+        if (secret == NULL) {
+            endfile();
+        }
+    }
     //printf("secret = %s\n", secret);
     start_info();
 
@@ -38,7 +49,7 @@ int main(int argc, char* argv[]) {
             }
             i++;
             printf("Well placed pieces: %d\n", well_placed);
-            printf("Mislaced pieces: %d\n", misplaced);
+            printf("Misplaced pieces: %d\n", misplaced);
             printf("\n");
         } else {
             printf("Wrong input!\n");

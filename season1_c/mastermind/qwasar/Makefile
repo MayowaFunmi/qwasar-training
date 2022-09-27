@@ -1,7 +1,7 @@
 all: my_mastermind
 
-my_mastermind : my_mastermind.c functions.h info.h
-	gcc -Wall -Wextra -Werror -o my_mastermind my_mastermind.c functions.h info.h
+my_mastermind : my_mastermind.c headers.h
+	gcc -Wall -Wextra -Werror -o my_mastermind my_mastermind.c headers.h
 
 .PHONY: clean fclean re
 

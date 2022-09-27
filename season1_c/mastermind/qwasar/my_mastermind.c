@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#include <ctype.h>
-
-#define NUM_STRING 4
+#include "headers.h"
 
 void start_info() {
     printf("Will you find the secret code?\n");
