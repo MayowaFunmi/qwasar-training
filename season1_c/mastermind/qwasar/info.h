@@ -1,9 +1,6 @@
 #include <stdio.h>
 
-void start_info() {
-    printf("Will you find the secret code?\n");
-    printf("Please enter a valid guess\n");
-}
+
 
 /*
 all: my_mastermind
