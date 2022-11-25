@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "headers.h"
 
 void start_info() {
@@ -82,6 +83,9 @@ void checkCode(char* secret) {
     while (i<10){
         printf("Round %d\n", i);
         char* get_code = commandInput();
+        if (get_code[0] == '\0') {
+            break;
+        }
         if((my_isdigit(get_code) == 0) && (equality(get_code, secret) == 0)) {
             printf("Congratz! You did it!\n");
             break;
@@ -111,7 +115,4 @@ int main(int argc, char* argv[]) {
     start_info();
     checkCode(secret);
     return 0;
-    //gcc my_mastermind.c -o my_mastermind
-    // gcc -c my_mastermind.c => creates my_mastermind.o
-    // gcc -o my_mastermind my_mastermind.o => creates my_mastermind file
 }
