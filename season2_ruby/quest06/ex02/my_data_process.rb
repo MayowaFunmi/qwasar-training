@@ -1,57 +1,31 @@
-require 'date'
+$data_dict = {}
+$val_arr = []
 
-def transform_age(age)
-    if age < 21
-        return "1->20"
-    elsif age < 41
-        return "21->40"
-    elsif age < 66
-        return "41->65"
-    else
-        return "66->99"
-    end
-end
-
-def transform_email(email)
-    return email.split('@')[1]
-end
-
-def transform_time(time)
-    #time = Time.now
-    time_object = DateTime.parse(time, '%Y-%m-%d %H:%M:%S')
-    if time_object.hour < 12
-        return 'morning'
-    elsif time_object.hour < 18
-        return 'afternoon'
-    else
-        return 'evening'
-    end    
-end
-
-def my_data_transform(csv_content)
-    res = []
-    line_number = 0
-    for line in csv_content.split("\n") do
-        content = line.split(",")
-        if content.length > 1 && line_number > 0
-            content[4] = transform_email content[4]
-            content[5] = transform_age content[5].to_i
-            content[9] = transform_time content[9]
-        end
-        line_number += 1
-        if content.length > 1
-            res.append(content.join(','))
+def gender_vals(data)
+    for i in data[0].split(',') do
+        if i != 'FirstName' && i != 'LastName' && i != 'UserName'
+            $data_dict[i] = {}
         end
     end
-    #return res
-    for i in 0...res.length do
-        puts res[i]
+    data_values = data.slice(1, data.length+1)
+    for values in data_values do
+        $val_arr.append(values.split(','))
     end
+    return $val_arr[1]
+end
+
+def my_data_process(data)
+    gender_vals data
 end
 
 def run
-    csv_content = "Gender,FirstName,LastName,UserName,Email,Age,City,Device,Coffee Quantity,Order At\nMale,Carl,Wilderman,carl,wilderman_carl@yahoo.com,29,Seattle,Safari iPhone,2,2020-03-06 16:37:56\nMale,Marvin,Lind,marvin,marvin_lind@hotmail.com,77,Detroit,Chrome Android,2,2020-03-02 13:55:51\nFemale,Shanelle,Marquardt,shanelle,marquardt.shanelle@hotmail.com,21,Las Vegas,Chrome,1,2020-03-05 17:53:05\nFemale,Lavonne,Romaguera,lavonne,romaguera.lavonne@yahoo.com,81,Seattle,Chrome,2,2020-03-04 10:33:53\nMale,Derick,McLaughlin,derick,mclaughlin.derick@hotmail.com,47,Chicago,Chrome Android,1,2020-03-05 15:19:48\n"
-    puts my_data_transform csv_content
+    output= ["Gender,FirstName,LastName,UserName,Email,Age,City,Device,Coffee Quantity,Order At", "Male,Carl,Wilderman,carl,yahoo.com,21->40,Seattle,Safari iPhone,2,afternoon", "Male,Marvin,Lind,marvin,hotmail.com,66->99,Detroit,Chrome Android,2,afternoon", "Female,Shanelle,Marquardt,shanelle,hotmail.com,21->40,Las Vegas,Chrome,1,afternoon", "Female,Lavonne,Romaguera,lavonne,yahoo.com,66->99,Seattle,Chrome,2,morning", "Male,Derick,McLaughlin,derick,hotmail.com,41->65,Chicago,Chrome Android,1,afternoon"]
+    puts my_data_process output
 end
 
 run
+#arr2D = Array.new(2){Array.new(3)}
+a= Hash.new
+a[[1,2]]= 23
+a[[5,6]]= 42
+puts a
