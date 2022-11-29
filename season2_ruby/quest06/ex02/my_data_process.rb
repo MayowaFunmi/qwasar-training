@@ -54,11 +54,50 @@ def city_vals
     return
 end
 
+def device_vals
+    devices = []
+    device_set = []
+    for val in $val_arr do
+        devices.append(val[7])
+    end
+    device_set = devices.uniq
+    for i in device_set do
+        $data_dict["Device"][i] = devices.count(i)
+    end
+end
+
+def coffee_vals
+    coffee = []
+    coffee_set = []
+    for val in $val_arr do
+        coffee.append(val[8])
+    end
+    coffee_set = coffee.uniq
+    for i in coffee_set do
+        $data_dict["Coffee Quantity"][i] = coffee.count(i)
+    end
+end
+
+def order_vals
+    order = []
+    order_set = []
+    for val in $val_arr do
+        order.append(val[9])
+    end
+    order_set = order.uniq
+    for i in order_set do
+        $data_dict["Order At"][i] = order.count(i)
+    end
+end
+
 def my_data_process(data)
     gender_vals data
     email_vals
     age_vals
     city_vals
+    device_vals
+    coffee_vals
+    order_vals
     return $data_dict
 end
 
