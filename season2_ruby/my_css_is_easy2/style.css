@@ -1,0 +1,36 @@
+.home {}
+
+.header {
+    background-color: orange;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.borders {
+    border: 1px solid black;
+    padding: 1px;
+}
+
+.main {
+    background-color: blue;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.empty {
+    background-color: white;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.sidebar {
+    background-color: pink;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.footer {
+    background-color: green;
+    height: 100px;
+    border-radius: 10px;
+}

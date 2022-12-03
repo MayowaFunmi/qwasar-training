@@ -21,11 +21,13 @@ int main(int argc, char* argv[]) {
     for (int a=1; a<argc; a++) { 
         string = argv[a]; 
         for (int x=0; string[x] != '\0'; x++) { 
-            if(string[x] >= 97 && string[x] <= 122) { 
+            if(string[x] >= 97 && string[x] <= 122) {
                 count[string[x] - 97] ++; 
+                //printf("count = %d", count);
             }
             if(string[x]>=65 && string[x]<=90){ 
                 capital[string[x] - 65]++; 
+                //printf("capital = %d", capital);
             }
             if(string[x] == ' '){ 
                 others[32]++; 
