@@ -1,0 +1,252 @@
+Checks detail Report:
+
+   MY USERS APP MODEL CREATE                                                   FAILURE                                               
+  SHOULD CREATE A USER AND NOT                                                                                                       
+             BE NIL                                                                                                                  
+
+ Input                                   it 'should create a user and not be nil' do                                                 
+                                                                                                                                     
+                                           expect(@user).not_to be(nil)                                                              
+                                         end                                                                                         
+                                                                                                                                     
+ Expected Output                 ""                                                                                                  
+ Expected Return Value                                                                                                               
+ Output                          /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end 
+ Return Value                                                                                                                        
+
+
+   MY USERS APP MODEL CREATE                                                   FAILURE                                               
+  SHOULD CREATE A USER AND NOT                                                                                                       
+             BE NIL                                                                                                                  
+
+ Input                                   it 'should create a user and not be nil' do                                                 
+                                           expect(@user.firstname).to eq(@firstname)                                                 
+                                           expect(@user.lastname).to eq(@lastname)                                                   
+                                           expect(@user.age).to eq(@age)                                                             
+                                           expect(@user.email).to eq(@email)                                                         
+                                         end                                                                                         
+                                                                                                                                     
+ Expected Output                 ""                                                                                                  
+ Expected Return Value                                                                                                               
+ Output                          /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end 
+ Return Value                                                                                                                        
+
+
+   MY USERS APP MODEL CREATE                                                    FAILURE                                                 
+  SHOULD CREATE A USER INSIDE                                                                                                           
+         THE SQLITE DB                                                                                                                  
+
+ Input                                   it 'should create a user inside the sqlite db' do                                              
+                                           expect(@db.query("SELECT * FROM users WHERE firstname = '#{@firstname}';").any?).to eq(true) 
+                                         end                                                                                            
+                                                                                                                                        
+ Expected Output                 ""                                                                                                     
+ Expected Return Value                                                                                                                  
+ Output                          /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end    
+ Return Value                                                                                                                           
+
+
+ MY USERS APP MODEL FIND SHOULD                                                FAILURE                                               
+   CREATE A USER AND FIND IT                                                                                                         
+
+ Input                                   it 'should create a user and find it' do                                                    
+                                           current_user = User.find(@user.id)                                                        
+                                                                                                                                     
+                                           expect(current_user.firstname).to eq(@firstname)                                          
+                                           expect(current_user.lastname).to eq(@lastname)                                            
+                                           expect(current_user.age).to eq(@age)                                                      
+                                           expect(current_user.email).to eq(@email)                                                  
+                                         end                                                                                         
+                                                                                                                                     
+ Expected Output                 ""                                                                                                  
+ Expected Return Value                                                                                                               
+ Output                          /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end 
+ Return Value                                                                                                                        
+
+
+   MY USERS APP MODEL UPDATE                                                   FAILURE                                               
+  SHOULD UPDATE USER FIRSTNAME                                                                                                       
+
+ Input                                   it 'should update user firstname' do                                                        
+                                           User.update(@user.id, :firstname, 'Tom')                                                  
+                                           current_user = User.find(@user.id)                                                        
+                                           expect(current_user.firstname).to eq('Tom')                                               
+                                           expect(current_user.lastname).to eq(@lastname)                                            
+                                           expect(current_user.age).to eq(@age)                                                      
+                                           expect(current_user.email).to eq(@email)                                                  
+                                         end                                                                                         
+                                                                                                                                     
+ Expected Output                 ""                                                                                                  
+ Expected Return Value                                                                                                               
+ Output                          /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end 
+ Return Value                                                                                                                        
+
+
+ MY USERS APP MODEL ALL SHOULD                                                 FAILURE                                               
+    CREATE A USER INSIDE THE                                                                                                         
+           SQLITE DB                                                                                                                 
+
+ Input                                   it 'should create a user inside the sqlite db' do                                           
+                                           users = User.all                                                                          
+                                                                                                                                     
+                                           expect(users.count).to eq(5)                                                              
+                                         end                                                                                         
+                                                                                                                                     
+ Expected Output                 ""                                                                                                  
+ Expected Return Value                                                                                                               
+ Output                          /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end 
+ Return Value                                                                                                                        
+
+
+   MY USERS APP MODEL DESTROY                                                  FAILURE                                               
+  SHOULD CREATE A USER INSIDE                                                                                                        
+         THE SQLITE DB                                                                                                               
+
+ Input                                   it 'should create a user inside the sqlite db' do                                           
+                                           User.destroy(@users.first.id)                                                             
+                                                                                                                                     
+                                           users = User.all                                                                          
+                                                                                                                                     
+                                           expect(users.count).to eq(4)                                                              
+                                         end                                                                                         
+                                                                                                                                     
+ Expected Output                 ""                                                                                                  
+ Expected Return Value                                                                                                               
+ Output                          /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end 
+ Return Value                                                                                                                        
+
+
+      MY USERS APP BACKEND                                                                                               FAILURE                                                                                          
+ CONTROLLER SIMPLE GET REQUEST                                                                                                                                                                                            
+           ON /USERS                                                                                                                                                                                                      
+
+ Input                                   it 'simple get request on /users' do                                                                                                                                             
+                                             response = QwasarRspec::Web.get('/users', headers: {'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json'})                                  
+                                                                                                                                                                                                                          
+                                             expect(JSON.parse(response.parsed_response).count).to eq(@users.count)                                                                                                       
+                                         end                                                                                                                                                                              
+                                                                                                                                                                                                                          
+ Expected Output                 ""                                                                                                                                                                                       
+ Expected Return Value                                                                                                                                                                                                    
+ Output                          Server not found on port 8080. Stderr: app.rb:3:in `require_relative': /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end (SyntaxError) 
+                                        from app.rb:3:in `<main>'                                                                                                                                                                
+                                                                                                                                                                                                                          
+ Return Value                                                                                                                                                                                                             
+
+
+      MY USERS APP BACKEND                                                                                                                                                                    FAILURE                                                                                                                                                              
+ CONTROLLER SIMPLE POST REQUEST                                                                                                                                                                                                                                                                                                                                    
+   ON /USERS - CREATE A USER                                                                                                                                                                                                                                                                                                                                       
+
+ Input                                   it 'simple post request on /users - create a user' do                                                                                                                                                                                                                                                                     
+                                             response = QwasarRspec::Web.post('/users', headers: {'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json'}, body: {'firstname' => "firstname_from_httparty", 'lastname' => "lastname_from_httparty", 'age' => @age, 'password' => @password, 'email' => "from_httparty@matrix.org"}) 
+                                                                                                                                                                                                                                                                                                                                                                   
+                                             user_hash = JSON.parse(response.parsed_response)                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                   
+                                             expect(user_hash['firstname']).to eq('firstname_from_httparty')                                                                                                                                                                                                                                                       
+                                             expect(user_hash['lastname']).to eq('lastname_from_httparty')                                                                                                                                                                                                                                                         
+                                             expect(user_hash['age']).to eq(@age)                                                                                                                                                                                                                                                                                  
+                                             expect(user_hash['email']).to eq("from_httparty@matrix.org")                                                                                                                                                                                                                                                          
+                                         end                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                                                   
+ Expected Output                 ""                                                                                                                                                                                                                                                                                                                                
+ Expected Return Value                                                                                                                                                                                                                                                                                                                                             
+ Output                          Server not found on port 8080. Stderr: app.rb:3:in `require_relative': /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end (SyntaxError)                                                                                                                                          
+                                        from app.rb:3:in `<main>'                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                                                   
+ Return Value                                                                                                                                                                                                                                                                                                                                                      
+
+
+      MY USERS APP BACKEND                                                                                               FAILURE                                                                                          
+       CONTROLLER SIGN IN                                                                                                                                                                                                 
+
+ Input                                   it 'sign in' do                                                                                                                                                                  
+                                             response = QwasarRspec::Web.post('/users', body: {'email' => "0_neo@matrix.world", 'password' => @password})                                                                 
+                                                                                                                                                                                                                          
+                                             expect(response.code).to eq(200)                                                                                                                                             
+                                         end                                                                                                                                                                              
+                                                                                                                                                                                                                          
+ Expected Output                 ""                                                                                                                                                                                       
+ Expected Return Value                                                                                                                                                                                                    
+ Output                          Server not found on port 8080. Stderr: app.rb:3:in `require_relative': /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end (SyntaxError) 
+                                        from app.rb:3:in `<main>'                                                                                                                                                                
+                                                                                                                                                                                                                          
+ Return Value                                                                                                                                                                                                             
+
+
+      MY USERS APP BACKEND                                                                                               FAILURE                                                                                          
+    CONTROLLER WRONG SIGN IN                                                                                                                                                                                              
+
+ Input                                   it 'wrong sign in' do                                                                                                                                                            
+                                             response = QwasarRspec::Web.post('/sign_in', body: {'email' => "wrong@email.com", 'password' => "wrongpassword"})                                                            
+                                                                                                                                                                                                                          
+                                             expect(response.code).to eq(401)                                                                                                                                             
+                                         end                                                                                                                                                                              
+                                                                                                                                                                                                                          
+ Expected Output                 ""                                                                                                                                                                                       
+ Expected Return Value                                                                                                                                                                                                    
+ Output                          Server not found on port 8080. Stderr: app.rb:3:in `require_relative': /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end (SyntaxError) 
+                                        from app.rb:3:in `<main>'                                                                                                                                                                
+                                                                                                                                                                                                                          
+ Return Value                                                                                                                                                                                                             
+
+
+      MY USERS APP BACKEND                                                                                                          FAILURE                                                                                                     
+ CONTROLLER REQUIRED SIGNED IN                                                                                                                                                                                                                  
+     SHOULD UPDATE PASSWORD                                                                                                                                                                                                                     
+
+ Input                                     it 'should update password' do                                                                                                                                                                       
+                                             response = QwasarRspec::Web.put('/users', headers: {'Cookie' => @cookies, 'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json'}, body: {'password' => @password}) 
+                                             user_hash = JSON.parse(response.parsed_response)                                                                                                                                                   
+                                                                                                                                                                                                                                                
+                                             expect(user_hash['firstname']).to eq('Thomas_0')                                                                                                                                                   
+                                           end                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                
+ Expected Output                 ""                                                                                                                                                                                                             
+ Expected Return Value                                                                                                                                                                                                                          
+ Output                          Server not found on port 8080. Stderr: app.rb:3:in `require_relative': /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end (SyntaxError)                       
+                                        from app.rb:3:in `<main>'                                                                                                                                                                                      
+                                                                                                                                                                                                                                                
+ Return Value                                                                                                                                                                                                                                   
+
+
+      MY USERS APP BACKEND                                                                                               FAILURE                                                                                          
+ CONTROLLER REQUIRED SIGNED IN                                                                                                                                                                                            
+       SHOULD DELETE USER                                                                                                                                                                                                 
+
+ Input                                     it 'should delete user' do                                                                                                                                                     
+                                             response = QwasarRspec::Web.delete('/users', headers: {'Cookie' => @cookies, 'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json'})         
+                                                                                                                                                                                                                          
+                                             expect(response.code).to eq(204)                                                                                                                                             
+                                                                                                                                                                                                                          
+                                             response = QwasarRspec::Web.get('/users', headers: {'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json'})                                  
+                                                                                                                                                                                                                          
+                                             expect(JSON.parse(response.parsed_response).count).to eq(5)                                                                                                                  
+                                           end                                                                                                                                                                            
+                                                                                                                                                                                                                          
+ Expected Output                 ""                                                                                                                                                                                       
+ Expected Return Value                                                                                                                                                                                                    
+ Output                          Server not found on port 8080. Stderr: app.rb:3:in `require_relative': /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end (SyntaxError) 
+                                        from app.rb:3:in `<main>'                                                                                                                                                                
+                                                                                                                                                                                                                          
+ Return Value                                                                                                                                                                                                             
+
+
+   MY USERS APP BACKEND VIEW                                                                                             FAILURE                                                                                          
+  SHOULD RENDER A VIEW WITH 5                                                                                                                                                                                             
+             USERS                                                                                                                                                                                                        
+
+ Input                                   it 'should render a view with 5 users' do                                                                                                                                        
+                                           response = QwasarRspec::Web.get('/', headers: {'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json'})                                         
+                                                                                                                                                                                                                          
+                                           doc = Nokogiri::HTML(response.body)                                                                                                                                            
+                                                                                                                                                                                                                          
+                                           expect(doc.search('tr').count).to eq(5)                                                                                                                                        
+                                         end                                                                                                                                                                              
+                                                                                                                                                                                                                          
+ Expected Output                 ""                                                                                                                                                                                       
+ Expected Return Value                                                                                                                                                                                                    
+ Output                          Server not found on port 8080. Stderr: app.rb:3:in `require_relative': /tmp/d20221208-22-1lrpxlk/my_user_model.rb:71: syntax error, unexpected end-of-input, expecting end (SyntaxError) 
+                                        from app.rb:3:in `<main>'                                                                                                                                                                
+                                                                                                                                                                                                                          
+ Return Value                                                                                                                                                                                                             

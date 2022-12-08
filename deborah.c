@@ -1,58 +1,56 @@
-#include <stdio.h> 
-#include <string.h> 
-#include <stdbool.h>
-#include <stdlib.h> 
-void arrange (char array[], int size) {
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-for (int step = 0; step < size - 1; ++size ) {
-
-for (int i = 0; i < size - step - 1; ++i){
-
-if (array[i] > array[i + 1]) {
-int temp = array[i];
-array[i] = array[i + 1];
-array[i + 1] = temp; } }
-}
-}
-int main(int a, char*av) {
-    charjoin;
-    join=(malloc(700sizeof(char)));
-
-    int counter = 0;
-    for (int i =1; i < a; i++) {
-        charcurrent_str=av[i];
-
-        int length = strlen(current_str);
-        for (int j = 0; j <length; j++){
-            join[counter] = current_str[j];
-            counter++;
-        }
+int main(int argc, char*argv[]) {
+  char* string;
+  string = (char*)malloc(100*sizeof(char));
+  int numbers[200];
+  int pages[200];
+  int last[200];
+  printf("no of args = %d/n", argc);
+  for(int i = 0; i < 200; i++) {
+    pages[i] = 0;
+    last[i] = 0;
+    numbers[i] = 0;
+    
+  }
+  for (int a=1; a<argc; a++) {
+    string = argv[a];
+    for (int v = 0; string[v]!='\0'; v++) {
+    if(string[v] >= 97 && string[v] <= 122){
+      pages[string[v] - 97]++;
     }
-    int str_len = strlen(join);
-
-    arrange(join, str_len);
-    char unique[str_len];
-
-    int counted = 0;
-
-    for(int i = 0; i < str_len; i++) {
-        bool char_counted = false;
-        for (int j = 0; j < counted; j++){
-            if(join[i] == unique[j]){
-                char_counted = true;
-                continue;
-            }
-        }
-        if(char_counted){
-            continue;
-        }
-        int counter = 0;
-        for (int j = 0; j < str_len; j++){
-            if (join[i] == join[j]) counter++;
-        }
-        printf("%c:%d/n", join[i], counter);
-        unique[counted] = join[i];
-        counted++;
+    if(string[v]>=65 && string[v]<=90){
+      last[string[v]-65]++;
     }
-    return EXIT_SUCCESS;
+    if(string[v] == ' '){
+      numbers[32]++;
+    }
+    if(string[v] ==','){
+      numbers[44]++;
+    }
+    if(string[v] =='.'){
+      numbers[46]++;
+    }
+    }
+  }
+for (int y = 0; y < 200; y++) {
+  if(numbers[y] != 0) {
+    printf("%c:%d\n",y,numbers[y]);
+  }
+}
+for (int j = 0; j < 200; j++) {
+  if(last[j] != 0) {
+    printf("%c: %d\n", (j + 65), 
+      last[j]);
+  }
+}
+for(int e = 0; e < 200; e++) {
+  if (pages[e] != 0){
+    printf("%c: %d\n",(e + 97),
+      pages[e]);
+  }
+}
+return 0;
 }
